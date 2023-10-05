@@ -8,21 +8,7 @@
 <body>
 <div class = "container-fluid">
   <div class="container input-group w-25 d-flex justify-content-center" >
-    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active"  href="/">Home</a>
-            <a class="nav-link" aria-current="page" href="/managePizza">Manage-Pizza</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
+    <div th:insert="fragment/navbar::navbar"></div>
     <div class="container input-group d-flex justify-content-center" >
       <h1>Hello Pizza</h1>
       <form method="post" th:action="@{/addPizza}" th:object="${pizza}">
@@ -44,14 +30,18 @@
         <th>Ingredients</th>
         <th>Price</th>
         <th>Image</th>
+        <td></td>
+        <td></td>
       </tr>
       </thead>
       <tbody>
       <tr th:each="pizza :${pizzas}">
         <td th:text="${pizza.name}"></td>
         <td th:text="${pizza.ingredients}"></td>
-        <td th:text="${pizza.price}"></td>
+        <td th:text="${#numbers.formatDecimal(pizza.price,0,'COMMA', 2, 'POINT')} + ' CHF'"></td>
         <td><img th:src="@{/images/{image}(image=${pizza.imageName})}" height="40px"></td>
+        <td><button type="button" class="btn btn-danger">Delete</button></td>
+        <td><button type="button" class="btn btn-success">Edit</button></td>
       </tr>
       </tbody>
 
