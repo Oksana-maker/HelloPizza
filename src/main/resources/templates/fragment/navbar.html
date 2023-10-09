@@ -6,9 +6,8 @@
     <title>nav</title>
 </head>
 <body>
-
         <div th:fragment="navbar">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary w-30">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary w-30 nav-underline">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">Pizza Shop</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,10 +15,19 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>  <!-- TODO -->
-                            <a class="nav-link" href="/managePizza">Manage-Pizza</a>
-<!--                            <a class="nav-link" th:attrappend="${#httpServletRequest.getRequestURI()=='/'?'active':''}" href="/">Home</a>-->
-<!--                            <a class="nav-link" th:attrappend="${#httpServletRequest.getRequestURI()=='/managePizza'?'activ':''}" href="/managePizza">Manage-Pizza</a>-->
+
+                            <a th:if ="${url=='/'}" class="nav-link active" href="/">Home</a>
+                            <a th:unless ="${url=='/'}" class="nav-link" href="/">Home</a>
+
+                            <a th:if ="${url =='/managePizza'}" class="nav-link active" href="/managePizza">Manage-Pizza</a>
+                            <a th:unless ="${url == '/managePizza'}" class="nav-link" href="/managePizza">Manage-Pizza</a>
+
+                            <a th:if ="${url =='/manageBeverage'}" class="nav-link active" href="/managePBeverage">Manage-Beverage</a>
+                            <a th:unless ="${url == '/manageBeverage'}" class="nav-link" href="/manageBeverage">Manage-Beverage</a>
+
+                            <a th:if ="${url =='/showBeverage'}" class="nav-link active" href="/showBeverage">Show-Beverage</a>
+                            <a th:unless ="${url == '/showBeverage'}" class="nav-link" href="/showBeverage">Show-Beverage</a>
+
                         </div>
                     </div>
                 </div>

@@ -35,7 +35,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="pizza :${pizzas}">
+      <tr class="align-middle" th:each="pizza :${pizzas}">
         <td th:text="${pizza.name}"></td>
         <td th:text="${pizza.ingredients}"></td>
         <td th:text="${#numbers.formatDecimal(pizza.price,0,'COMMA', 2, 'POINT')} + ' CHF'"></td>

@@ -3,6 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/images/margarita.jpeg" type="image/png">
     <title>Title</title>
     <link href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -27,7 +28,7 @@
                 </tr>
                 </thead>
             <tbody>
-            <tr th:each="pizza :${pizzas}">
+            <tr class = "align-middle" th:each="pizza :${pizzas}">
                 <td th:text="${pizza.name}"></td>
                 <td th:text="${pizza.ingredients}"></td>
                 <td th:text="${#numbers.formatDecimal(pizza.price, 1, 2)} + ' CHF'"></td>
